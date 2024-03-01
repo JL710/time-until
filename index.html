@@ -23,6 +23,7 @@
     <div>The Big Bang Theory Episodes: <span id="bbt_episodes"></span></div>
     <div>Elton John - I'm Still Standing Recordings: <span id="still_standing"></span></div>
     <div>School Lessons (45min) <span id="school_lessons"></span></div>
+    <div>Park Sessions <span id="park_sessions"></span></div>
 
 
     <script>
@@ -65,6 +66,7 @@
             document.getElementById("bbt_episodes").textContent = minutes / 22;
             document.getElementById("still_standing").textContent = minutes / 4;
             document.getElementById("school_lessons").textContent = minutes / 45;
+            document.getElementById("park_sessions").textContent = hours / 5.5;;
         }
 
         var intervalId = window.setInterval(function(){
