@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Until</title>
 </head>
+
 <body style="font-family: Arial, Helvetica, sans-serif;">
     <h1>Time Until</h1>
-    <div>?year=2000&month=01&day=01</div>
+    <div>?year=2000&month=01&day=01&hour=01&minute=01</div>
     <hr>
     <div>Until <span id="target"></span> there are: </div>
     <br>
@@ -16,6 +18,7 @@
     <div>Days: <span id="days"></span></div>
     <div>Hours: <span id="hours"></span></div>
     <div>Minutes: <span id="minutes"></span></div>
+    <div>Seconds: <span id="seconds"></span></div>
     <div>Instant Noodles: <span id="instant_noodles"></span></div>
     <div>Pizzas: <span id="pizza"></span></div>
     <div>Minecraft Days: <span id="minecraft_days"></span></div>
@@ -38,23 +41,26 @@
         let day = getUrlParameter("day");
         let month = getUrlParameter("month");
         let year = getUrlParameter("year");
+        let hour = getUrlParameter("hour");
+        let minute = getUrlParameter("minute");
 
-        document.getElementById("target").textContent = `${day} / ${month} / ${year}`
+        var target = new Date(year, month - 1, day, hour, minute);
 
-        var target = new Date(year, month-1, day) / 1000;
+        document.getElementById("target").textContent = target;
 
         console.log(target);
 
         function refresh() {
-            let now_timestamp = Date.now() / 1000;
+            let now = Date.now();
 
-            let seconds_between = target - now_timestamp;
+            let seconds_between = (target.valueOf() - now.valueOf()) / 1000; // /1000 convert from ms to s
 
             let minutes = seconds_between / 60;
             let hours = minutes / 60;
             let days = hours / 24;
             let years = days / 265;
 
+            document.getElementById("seconds").textContent = seconds_between;
             document.getElementById("minutes").textContent = minutes;
             document.getElementById("hours").textContent = hours;
             document.getElementById("days").textContent = days;
@@ -63,7 +69,7 @@
             document.getElementById("instant_noodles").textContent = minutes / 5;
             document.getElementById("pizza").textContent = minutes / 13;
             document.getElementById("minecraft_days").textContent = minutes / 20;
-            document.getElementById("moon_phases").textContent = days / 29,53;
+            document.getElementById("moon_phases").textContent = days / 29, 53;
             document.getElementById("bbt_episodes").textContent = minutes / 22;
             document.getElementById("still_standing").textContent = minutes / 4;
             document.getElementById("school_lessons").textContent = minutes / 45;
@@ -71,9 +77,10 @@
             document.getElementById("office_episodes").textContent = minutes / 23;
         }
 
-        var intervalId = window.setInterval(function(){
+        var intervalId = window.setInterval(function () {
             refresh()
-          }, 1000);
+        }, 1000);
     </script>
 </body>
+
 </html>
