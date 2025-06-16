@@ -1,0 +1,127 @@
+body {
+  background-color: #e5fff9;
+  font-family: 'Comic Neue', cursive;
+  text-align: center;
+  padding: 1.25em;
+}
+
+h1 {
+  font-size: 3em;
+  color: #f18ca6;
+  margin: 0;
+}
+
+#target {
+  display: inline-block;
+  margin: 1.25em 0;
+  padding: 0.9em 1.8em;
+  background-color: #ffecd2;
+  border-radius: 1.25em;
+  font-size: 2em;
+  font-weight: bold;
+  box-shadow: 0.125em 0.125em 0.3125em rgba(0, 0, 0, 0.1);
+}
+
+#target:hover {
+  transform: scale(1.03);
+}
+
+.time-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25em;
+  margin: 1.875em 0;
+}
+
+.box {
+  width: 6.25em;
+  height: 3.2em;
+  border: 0.125em solid black;
+  border-radius: 0.5em;
+  display: flex;
+  padding-top: 1em;
+  justify-content: center;
+  font-size: 1.75em;
+  /*
+  Weitere Farben
+
+  background: linear-gradient(to bottom right, #fbc2eb, #a6c1ee);
+
+  background: linear-gradient(to top, #a1c4fd 0%, #c2e9fb 100%);
+
+  background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+  */
+  background: linear-gradient(to right, #ffecd2 0%, #f1938c 100%);
+  background-size: 600% 600%;
+  animation: gradientMove 5s ease infinite; /* Sekunde legt die Geschwindigkeit fest */
+  position: relative;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.box:hover {
+  transform: scale(1.03);
+}
+
+.label {
+  position: absolute;
+  bottom: 0.5em;
+  font-size: 1.125em;
+  color: black;
+}
+
+.thing-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2em;
+  margin-top: 2.5em;
+  padding: 1em;
+  justify-items: center;
+}
+
+.thing-item {
+  display: grid;
+  grid-template-rows: auto auto auto; /* 3 feste Reihen: Label, Bild, Zahl */
+  align-items: start;
+  text-align: center;
+  width: 100%;
+  min-height: 180px; /* für gleichmäßige Höhe, optional */
+}
+
+.thing-item:hover {
+  transform: scale(1.03);
+}
+
+.thing-label {
+  font-size: 1.1em;
+  margin-bottom: 0.3em;
+  min-height: 2em; /* sorgt für gleichmäßige Labelhöhe */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thing-item img {
+  width: 3em;
+  height: 3em;
+  object-fit: contain;
+  align-self: center;
+}
+
+.thing-count {
+  font-size: 1.5em;
+  font-weight: bold;
+  min-height: 2em; /* gleichmäßige Ziffernhöhe */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emoji {
+  font-size: 2em;
+}

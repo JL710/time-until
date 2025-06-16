@@ -5,30 +5,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Until</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body style="font-family: Arial, Helvetica, sans-serif;">
-    <h1>Time Until</h1>
+    <h1>Time Until ...</h1>
+    <!--
     <div>?year=2000&month=01&day=01&hour=01&minute=01</div>
-    <hr>
-    <div>Until <span id="target"></span> there are: </div>
+    -->
+    <div><span id="target"></span></div>
     <br>
-    <div>Years: <span id="years"></span></div>
-    <div>Weeks: <span id="weeks"></span></div>
-    <div>Days: <span id="days"></span></div>
-    <div>Hours: <span id="hours"></span></div>
-    <div>Minutes: <span id="minutes"></span></div>
-    <div>Seconds: <span id="seconds"></span></div>
-    <div>Instant Noodles: <span id="instant_noodles"></span></div>
-    <div>Pizzas: <span id="pizza"></span></div>
-    <div>Minecraft Days: <span id="minecraft_days"></span></div>
-    <div>Moon phases: <span id="moon_phases"></span></div>
-    <div>The Big Bang Theory Episodes: <span id="bbt_episodes"></span></div>
-    <div>The Office Episodes: <span id="office_episodes"></span></div>
-    <div>Elton John - I'm Still Standing Recordings: <span id="still_standing"></span></div>
-    <div>School Lessons (45min) <span id="school_lessons"></span></div>
-    <div>Park Sessions <span id="park_sessions"></span></div>
 
+    <hr>
+
+    <div class="time-boxes">
+        <div class="box"><span id="years"></span><div class="label">Years</div></div>
+        <div class="box"><span id="weeks"></span><div class="label">Weeks</div></div>
+        <div class="box"><span id="days"></span><div class="label">Days</div></div>
+        <div class="box"><span id="hours"></span><div class="label">Hours</div></div>
+        <div class="box"><span id="minutes"></span><div class="label">Minutes</div></div>
+        <div class="box"><span id="seconds"></span><div class="label">Seconds</div></div>
+    </div>
+
+    <hr>
+
+    <div class="thing-section">
+        <div class="thing-item">
+            <div class="thing-label">Instant Noodles</div>
+            <span class="emoji">🍜</span>
+            <div class="thing-count"><span id="instant_noodles"></span></div>
+        </div>
+        <div class="thing-item">
+            <div class="thing-label">Pizzas</div>
+            <span class="emoji">🍕</span>
+            <div class="thing-count"><span id="pizza"></span></div>
+        </div>
+        <div class="thing-item">
+            <div class="thing-label">Minecraft Days</div>
+            <span class="emoji">⛏️</span>
+            <div class="thing-count"><span id="minecraft_days"></span></div>
+        </div>
+        <div class="thing-item">
+            <div class="thing-label">Moon Phases</div>
+            <span class="emoji">🌑</span>
+            <div class="thing-count"><span id="moon_phases"></div>
+        </div>
+        <div class="thing-item">
+            <div class="thing-label">The Big Bang Theory Episodes</div>
+            <span class="emoji">💥</span>
+            <div class="thing-count"><span id="bbt_episodes"></div>
+        </div>
+        <div class="thing-item">
+            <div class="thing-label">The Office Episodes</div>
+            <span class="emoji">🗄️</span>
+            <div class="thing-count"><span id="office_episodes"></div>
+        </div>
+        <div class="thing-item">
+            <div class="thing-label">Elton John - I'm Still Standing Recordings</div>
+            <span class="emoji">🎵</span>
+            <div class="thing-count"><span id="still_standing"></div>
+        </div>
+        <div class="thing-item">
+            <div class="thing-label">School Lessons (45min)</div>
+            <span class="emoji">🏫</span>
+            <div class="thing-count"><span id="school_lessons"></div>
+        </div>
+        <div class="thing-item">
+            <div class="thing-label">Park Sessions</div>
+            <span class="emoji">🏞️</span>
+            <div class="thing-count"><span id="park_sessions"></div>
+        </div>
+    </div>
 
     <script>
         function getUrlParameter(name) {
@@ -46,7 +93,7 @@
 
         var target = new Date(year, month - 1, day, hour, minute);
 
-        document.getElementById("target").textContent = target;
+        document.getElementById("target").textContent = target.toDateString();
 
         console.log(target);
 
@@ -60,21 +107,22 @@
             let days = hours / 24;
             let years = days / 265;
 
-            document.getElementById("seconds").textContent = seconds_between;
-            document.getElementById("minutes").textContent = minutes;
-            document.getElementById("hours").textContent = hours;
-            document.getElementById("days").textContent = days;
-            document.getElementById("weeks").textContent = days / 7;
-            document.getElementById("years").textContent = years;
-            document.getElementById("instant_noodles").textContent = minutes / 5;
-            document.getElementById("pizza").textContent = minutes / 13;
-            document.getElementById("minecraft_days").textContent = minutes / 20;
-            document.getElementById("moon_phases").textContent = days / 29, 53;
-            document.getElementById("bbt_episodes").textContent = minutes / 22;
-            document.getElementById("still_standing").textContent = minutes / 4;
-            document.getElementById("school_lessons").textContent = minutes / 45;
-            document.getElementById("park_sessions").textContent = hours / 5.5;
-            document.getElementById("office_episodes").textContent = minutes / 23;
+            document.getElementById("seconds").textContent = Math.round(seconds_between);
+            document.getElementById("minutes").textContent = Math.round(minutes);
+            document.getElementById("hours").textContent = Math.round(hours);
+            document.getElementById("days").textContent = Math.round(days);
+            document.getElementById("weeks").textContent = Math.round(days / 7);
+            document.getElementById("years").textContent = Math.round(years);
+            document.getElementById("instant_noodles").textContent = `${Math.round(minutes / 5)}x`;
+            document.getElementById("pizza").textContent = `${Math.round(minutes / 13)}x`;
+            document.getElementById("minecraft_days").textContent = `${Math.round(minutes / 20)}x`;
+            document.getElementById("moon_phases").textContent = `${Math.round(days / 29.53)}x`;
+            document.getElementById("bbt_episodes").textContent = `${Math.round(minutes / 22)}x`;
+            document.getElementById("still_standing").textContent = `${Math.round(minutes / 4)}x`;
+            document.getElementById("school_lessons").textContent = `${Math.round(minutes / 45)}x`;
+            document.getElementById("park_sessions").textContent = `${Math.round(hours / 5.5)}x`;
+            document.getElementById("office_episodes").textContent = `${Math.round(minutes / 23)}x`;
+
         }
 
         var intervalId = window.setInterval(function () {
