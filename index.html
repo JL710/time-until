@@ -105,7 +105,7 @@
 
         var target = new Date(year, month - 1, day, hour, minute);
 
-        document.getElementById("target").textContent = target.toDateString();
+        document.getElementById("target").textContent = target.toLocaleDateString(undefined, { weekday: "long", month: "long" }) + ` ${target.getHours()}:${target.getMinutes()}`;
 
         console.log(target);
 
@@ -120,20 +120,20 @@
             let years = days / 265;
 
             document.getElementById("seconds").textContent = Math.round(seconds_between);
-            document.getElementById("minutes").textContent = Math.round(minutes);
-            document.getElementById("hours").textContent = Math.round(hours);
-            document.getElementById("days").textContent = Math.round(days);
-            document.getElementById("weeks").textContent = Math.round(days / 7);
-            document.getElementById("years").textContent = Math.round(years);
+            document.getElementById("minutes").textContent = minutes.toFixed(2);
+            document.getElementById("hours").textContent = hours.toFixed(2);
+            document.getElementById("days").textContent = days.toFixed(2);
+            document.getElementById("weeks").textContent = (days / 7).toFixed(2);
+            document.getElementById("years").textContent = years.toFixed(2);
             document.getElementById("instant_noodles").textContent = `${Math.round(minutes / 5)}x`;
             document.getElementById("pizza").textContent = `${Math.round(minutes / 13)}x`;
             document.getElementById("minecraft_days").textContent = `${Math.round(minutes / 20)}x`;
             document.getElementById("moon_phases").textContent = `${Math.round(days / 29.53)}x`;
-            document.getElementById("bbt_episodes").textContent = `${Math.round(minutes / 22)}x`;
+            document.getElementById("bbt_episodes").textContent = `${(minutes / 22).toFixed(2)}x`;
             document.getElementById("still_standing").textContent = `${Math.round(minutes / 4)}x`;
-            document.getElementById("school_lessons").textContent = `${Math.round(minutes / 45)}x`;
-            document.getElementById("park_sessions").textContent = `${Math.round(hours / 5.5)}x`;
-            document.getElementById("office_episodes").textContent = `${Math.round(minutes / 23)}x`;
+            document.getElementById("school_lessons").textContent = `${(minutes / 45).toFixed(2)}x`;
+            document.getElementById("park_sessions").textContent = `${(hours / 5.5).toFixed(2)}x`;
+            document.getElementById("office_episodes").textContent = `${(minutes / 23).toFixed(2)}x`;
 
         }
 
