@@ -151,9 +151,14 @@
 
         }
 
-        var intervalId = window.setInterval(function () {
-            refresh()
-        }, 1000);
+        var intervalId = window.setInterval(refresh, 1000);
+        document.addEventListener("visibilitychange", function () {
+            if (document.hidden) {
+                clearInterval(intervalId);
+            } else {
+                intervalId = setInterval(refresh, 1000);
+            }
+        });
     </script>
 </body>
 
